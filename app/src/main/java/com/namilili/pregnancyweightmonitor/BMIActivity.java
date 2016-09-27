@@ -68,6 +68,7 @@ public class BMIActivity extends AppCompatActivity implements LoaderCallbacks<Cu
     private View mCalcBMIFormView;
     private Button btnWeightManagement;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -225,6 +226,8 @@ public class BMIActivity extends AppCompatActivity implements LoaderCallbacks<Cu
 //            showProgress(true);
 //            mAuthTask = new UserLoginTask(weight, height);
 //            mAuthTask.execute((Void) null);
+            SharedPreferencesEdit.initSharedPreferences(getApplicationContext(),SharedPreferencesEdit.SP_BMI);
+            SharedPreferencesEdit.updateSharedPreferencesString(getApplicationContext(),SharedPreferencesEdit.SP_BMI,strBMI);
         }
     }
 

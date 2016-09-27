@@ -8,18 +8,13 @@ public class SharedPreferencesEdit
 
 	public static final String SP_FILENAME = "PregnacyWeightMonitor"; // 文件名称
 	public static final String SP_UUID = "UUID";
+	public static final String SP_BMI="BMI";
 
-	public static String fileName(Context context)
-	{
-		return SP_FILENAME;
-	}
-
-	public static boolean updateSharedPreferencesString(Context context,
-			String fileName, String key, String value)
+	public static boolean updateSharedPreferencesString(Context context, String key, String value)
 	{
 		try
 		{
-			SharedPreferences settings = context.getSharedPreferences(fileName,
+			SharedPreferences settings = context.getSharedPreferences(SP_FILENAME,
 					Context.MODE_PRIVATE);
 			settings.edit().putString(key, value == null ? "" : value).commit();
 		}
@@ -31,12 +26,11 @@ public class SharedPreferencesEdit
 		return true;
 	}
 
-	public static boolean updateSharedPreferencesInteger(Context context,
-			String fileName, String key, int value)
+	public static boolean updateSharedPreferencesInteger(Context context, String key, int value)
 	{
 		try
 		{
-			SharedPreferences settings = context.getSharedPreferences(fileName,
+			SharedPreferences settings = context.getSharedPreferences(SP_FILENAME,
 					Context.MODE_PRIVATE);
 			settings.edit().putInt(key, value).commit();
 		}
@@ -48,12 +42,11 @@ public class SharedPreferencesEdit
 		return true;
 	}
 
-	public static boolean updateSharedPreferencesBoolean(Context context,
-			String fileName, String key, boolean value)
+	public static boolean updateSharedPreferencesBoolean(Context context,String key, boolean value)
 	{
 		try
 		{
-			SharedPreferences settings = context.getSharedPreferences(fileName,
+			SharedPreferences settings = context.getSharedPreferences(SP_FILENAME,
 					Context.MODE_PRIVATE);
 			settings.edit().putBoolean(key, value).commit();
 		}
@@ -65,12 +58,11 @@ public class SharedPreferencesEdit
 		return true;
 	}
 
-	public static boolean updateSharedPreferencesLong(Context context,
-			String fileName, String key, long value)
+	public static boolean updateSharedPreferencesLong(Context context,String key, long value)
 	{
 		try
 		{
-			SharedPreferences settings = context.getSharedPreferences(fileName,
+			SharedPreferences settings = context.getSharedPreferences(SP_FILENAME,
 					Context.MODE_PRIVATE);
 			settings.edit().putLong(key, value).commit();
 		}
@@ -82,12 +74,11 @@ public class SharedPreferencesEdit
 		return true;
 	}
 
-	public static boolean updateSharedPreferencesFloat(Context context,
-			String fileName, String key, float value)
+	public static boolean updateSharedPreferencesFloat(Context context, String key, float value)
 	{
 		try
 		{
-			SharedPreferences settings = context.getSharedPreferences(fileName,
+			SharedPreferences settings = context.getSharedPreferences(SP_FILENAME,
 					Context.MODE_PRIVATE);
 			settings.edit().putFloat(key, value).commit();
 		}
@@ -99,12 +90,11 @@ public class SharedPreferencesEdit
 		return true;
 	}
 
-	public static boolean initSharedPreferences(Context context,
-			String fileName, String key)
+	public static boolean initSharedPreferences(Context context, String key)
 	{
 		try
 		{
-			SharedPreferences settings = context.getSharedPreferences(fileName,
+			SharedPreferences settings = context.getSharedPreferences(SP_FILENAME,
 					Context.MODE_PRIVATE);
 			settings.edit().putString(key, "").commit();
 		}
@@ -116,13 +106,12 @@ public class SharedPreferencesEdit
 		return true;
 	}
 
-	public static String querySharedPreferencesString(Context context,
-			String fileName, String key)
+	public static String querySharedPreferencesString(Context context,String key)
 	{
 		String value = "";
 		try
 		{
-			SharedPreferences settings = context.getSharedPreferences(fileName,
+			SharedPreferences settings = context.getSharedPreferences(SP_FILENAME,
 					Context.MODE_PRIVATE);
 			value = settings.getString(key, "");
 		}
@@ -134,13 +123,12 @@ public class SharedPreferencesEdit
 		return value;
 	}
 
-	public static Boolean querySharedPreferencesBoolean(Context context,
-			String fileName, String key)
+	public static Boolean querySharedPreferencesBoolean(Context context,String key)
 	{
 		Boolean value = true;
 		try
 		{
-			SharedPreferences settings = context.getSharedPreferences(fileName,
+			SharedPreferences settings = context.getSharedPreferences(SP_FILENAME,
 					Context.MODE_PRIVATE);
 			value = settings.getBoolean(key, true);
 		}
@@ -152,13 +140,12 @@ public class SharedPreferencesEdit
 		return value;
 	}
 
-	public static Integer querySharedPreferencesInt(Context context,
-			String fileName, String key)
+	public static Integer querySharedPreferencesInt(Context context,String key)
 	{
 		int value = 0;
 		try
 		{
-			SharedPreferences settings = context.getSharedPreferences(fileName,
+			SharedPreferences settings = context.getSharedPreferences(SP_FILENAME,
 					Context.MODE_PRIVATE);
 			value = settings.getInt(key, 0);
 		}
@@ -170,13 +157,12 @@ public class SharedPreferencesEdit
 		return value;
 	}
 
-	public static Long querySharedPreferencesLong(Context context,
-			String fileName, String key)
+	public static Long querySharedPreferencesLong(Context context,String key)
 	{
 		long value = 0;
 		try
 		{
-			SharedPreferences settings = context.getSharedPreferences(fileName,
+			SharedPreferences settings = context.getSharedPreferences(SP_FILENAME,
 					Context.MODE_PRIVATE);
 			value = settings.getLong(key, 0);
 		}
@@ -188,13 +174,12 @@ public class SharedPreferencesEdit
 		return value;
 	}
 
-	public static Float querySharedPreferencesFloat(Context context,
-			String fileName, String key)
+	public static Float querySharedPreferencesFloat(Context context,String key)
 	{
 		float value = 0;
 		try
 		{
-			SharedPreferences settings = context.getSharedPreferences(fileName,
+			SharedPreferences settings = context.getSharedPreferences(SP_FILENAME,
 					Context.MODE_PRIVATE);
 			value = settings.getFloat(key, 0);
 		}

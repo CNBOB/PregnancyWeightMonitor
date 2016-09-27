@@ -6,7 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class AddWeightActivity extends AppCompatActivity {
 
@@ -15,6 +18,9 @@ public class AddWeightActivity extends AppCompatActivity {
     private EditText etDate;
     private EditText etWeight;
     private Button btnSubmit;
+    private TextView tvBMI;
+    private String BMI;
+    private DatePicker datePicker;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,11 +32,19 @@ public class AddWeightActivity extends AppCompatActivity {
         etDate =(EditText) this.findViewById(R.id.date);
         etWeight =(EditText) this.findViewById(R.id.weight);
         btnSubmit = (Button) this.findViewById(R.id.add_weight);
+        tvBMI = (TextView) this.findViewById(R.id.bmi);
+      //  etDate.setEnabled(false);
+
+        BMI = SharedPreferencesEdit.querySharedPreferencesString(getApplicationContext(),SharedPreferencesEdit.SP_BMI);
+        tvBMI.setText(BMI);
+
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
                     dbHelper.insert(etDate.getText().toString(),etWeight.getText().toString());
+                    etDate.setText("");
+                    etWeight.setText("");
                 }
                 catch (SQLiteException e)
                 {
@@ -39,5 +53,11 @@ public class AddWeightActivity extends AppCompatActivity {
             }
         });
 
+        etDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 }
