@@ -33,14 +33,14 @@ public class PregnancyWeightDBHelper extends SQLiteOpenHelper  {
     }
 
     public Cursor getAll(String where, String orderBy) {//返回表中的数据,where是调用时候传进来的搜索内容,orderby是设置中传进来的列表排序类型
-        StringBuilder buf=new StringBuilder("SELECT _id, date, weight");
+        StringBuilder buf=new StringBuilder("SELECT _id, date, weight from PregnancyWeight");
 
-        if (where!=null) {
+        if (where!=null && where != "") {
             buf.append(" WHERE ");
             buf.append(where);
         }
 
-        if (orderBy!=null) {
+        if (orderBy!=null && orderBy != "") {
             buf.append(" ORDER BY ");
             buf.append(orderBy);
         }

@@ -6,7 +6,7 @@
     <string name="prompt_height">身高(米)</string>
     <string name="prompt_date">日期</string>
     <string name="action_calc_bmi">计算BMI</string>
-    <string name="action_weight_management">体重管理</string>
+    <string name="action_weight_management">记录每日体重</string>
     <string name="action_add_weight">记录体重</string>
     <string name="tip_bmi">体重指数19-24，正常体重\n体重指数&gt;24，超重\n体重指数&lt;19，低体重</string>
     <string name="action_sign_in_short">Sign in</string>

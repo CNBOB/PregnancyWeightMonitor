@@ -8,12 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
-    <ScrollView
-        android:id="@+id/new_weight_form"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
+         <LinearLayout
             android:id="@+id/weight_bmi_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -84,13 +79,12 @@
                 android:textStyle="bold" />
 
             <ListView
+                android:id="@+id/listWeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
             </ListView>
 
         </LinearLayout>
-
-    </ScrollView>
 
 </LinearLayout>

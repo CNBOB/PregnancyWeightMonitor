@@ -103,6 +103,7 @@ public class BMIActivity extends AppCompatActivity implements LoaderCallbacks<Cu
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(BMIActivity.this,AddWeightActivity.class));
+                finish();
             }
         });
 
@@ -114,7 +115,6 @@ public class BMIActivity extends AppCompatActivity implements LoaderCallbacks<Cu
         if (!mayRequestContacts()) {
             return;
         }
-
         getLoaderManager().initLoader(0, null, this);
     }
 
@@ -208,7 +208,7 @@ public class BMIActivity extends AppCompatActivity implements LoaderCallbacks<Cu
 
             double bmi = dWeight/dHeight/dHeight;
 
-            if (bmi>24||bmi<19)
+            if (bmi > 24|| bmi < 19)
             {
                 tvBMI.setTextColor(getResources().getColor(R.color.RED));
             }
