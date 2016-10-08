@@ -1,5 +1,6 @@
 package com.namilili.pregnancyweightmonitor;
 
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class AddWeightActivity extends AppCompatActivity {
 
@@ -27,9 +29,15 @@ public class AddWeightActivity extends AppCompatActivity {
     private Button btnSubmit;
     private TextView tvBMI;
     private String BMI;
-    private DatePicker datePicker;
     private WeightListAdapter weightListAdapter;
     private ListView weightList;
+
+    private DatePicker datePicker;
+    private Calendar calendar;
+
+    private int year;
+    private int month;
+    private int day;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +59,23 @@ public class AddWeightActivity extends AppCompatActivity {
 
         initListView();
 
+        // 获取日历对象
+        calendar = Calendar.getInstance();
+        // 获取当前对应的年、月、日的信息
+        year = calendar.get(Calendar.YEAR);
+        month = calendar.get(Calendar.MONTH);
+        day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        datePicker = (DatePicker) findViewById(R.id.myDatePicker);
+
+        etDate.setText(year + "-" + (month+1) + "-" + day);
+//        etWeight.hasFocus();
+        etWeight.requestFocus();
+
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 try {
                     dbHelper.insert(etDate.getText().toString(),etWeight.getText().toString());
                     etDate.setText("");
@@ -90,9 +112,38 @@ public class AddWeightActivity extends AppCompatActivity {
             }
         });
 
+        etDate.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+
+                if (b) {
+                    // 初始化DatePickerDialog
+                    new DatePickerDialog(AddWeightActivity.this, new DatePickerDialog.OnDateSetListener() {
+                        @Override
+                        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                            etDate.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+                            month = monthOfYear;
+                            day = dayOfMonth;
+                            etWeight.requestFocus();
+                        }
+                    }, year, month, day).show();
+                }
+            }
+        });
+
         etDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // 初始化DatePickerDialog
+                new DatePickerDialog(AddWeightActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        etDate.setText(year + "-" + (monthOfYear +1 ) + "-" + dayOfMonth);
+                        month = monthOfYear;
+                        day = dayOfMonth;
+                        etWeight.requestFocus();
+                    }
+                }, year, month, day).show();
             }
         });
     }

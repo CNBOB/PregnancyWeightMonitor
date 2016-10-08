@@ -55,6 +55,17 @@
 
             </android.support.design.widget.TextInputLayout>
 
+             <DatePicker
+                 android:id="@+id/myDatePicker"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center_horizontal"
+                 android:startYear="2015"
+                 android:endYear="2020"
+                 android:calendarViewShown="true"
+                 android:spinnersShown="true"
+                 android:visibility="gone"/>
+
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
